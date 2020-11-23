@@ -10,19 +10,19 @@ const App = () => {
   const [items, setItems] = useState([
     {
       id: uuid(),
-      text: "Item 1",
+      text: "Phone",
     },
     {
       id: uuid(),
-      text: "Item 2",
+      text: "Television",
     },
     {
       id: uuid(),
-      text: "Item 3",
+      text: "Play station",
     },
     {
       id: uuid(),
-      text: "Item 4",
+      text: "Laptop",
     },
   ]);
 
