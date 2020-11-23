@@ -1,28 +1,28 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, FlatList, Alert} from 'react-native';
-import {uuid} from 'uuidv4';
+import React, { useState } from "react";
+import { View, StyleSheet, FlatList, Alert } from "react-native";
+import { uuid } from "uuidv4";
 
-import Header from './components/Header';
-import ListItem from './components/ListItem';
-import AddItem from './components/AddItem';
+import Header from "./components/Header";
+import ListItem from "./components/ListItem";
+import AddItem from "./components/AddItem";
 
 const App = () => {
   const [items, setItems] = useState([
     {
       id: uuid(),
-      text: 'Milk',
+      text: "Item 1",
     },
     {
       id: uuid(),
-      text: 'Eggs',
+      text: "Item 2",
     },
     {
       id: uuid(),
-      text: 'Bread',
+      text: "Item 3",
     },
     {
       id: uuid(),
-      text: 'Juice',
+      text: "Item 4",
     },
   ]);
 
@@ -37,17 +37,17 @@ const App = () => {
 
   const [checkedItems, checkedItemChange] = useState([]);
 
-  const deleteItem = id => {
-    setItems(prevItems => {
-      return prevItems.filter(item => item.id !== id);
+  const deleteItem = (id) => {
+    setItems((prevItems) => {
+      return prevItems.filter((item) => item.id !== id);
     });
   };
 
   // Submit the users edits to the overall items state
   const saveEditItem = (id, text) => {
-    setItems(prevItems => {
-      return prevItems.map(item =>
-        item.id === editItemDetail.id ? {id, text: editItemDetail.text} : item,
+    setItems((prevItems) => {
+      return prevItems.map((item) =>
+        item.id === editItemDetail.id ? { id, text: editItemDetail.text } : item
       );
     });
     // Flip edit status back to false
@@ -55,26 +55,26 @@ const App = () => {
   };
 
   // Event handler to capture users text input as they edit an item
-  const handleEditChange = text => {
-    editItemDetailChange({id: editItemDetail.id, text});
+  const handleEditChange = (text) => {
+    editItemDetailChange({ id: editItemDetail.id, text });
   };
 
-  const addItem = text => {
+  const addItem = (text) => {
     if (!text) {
       Alert.alert(
-        'No item entered',
-        'Please enter an item when adding to your shopping list',
+        "No item entered",
+        "Please enter an item when adding to your shopping list",
         [
           {
-            text: 'Understood',
-            style: 'cancel',
+            text: "Understood",
+            style: "cancel",
           },
         ],
-        {cancelable: true},
+        { cancelable: true }
       );
     } else {
-      setItems(prevItems => {
-        return [{id: uuid(), text}, ...prevItems];
+      setItems((prevItems) => {
+        return [{ id: uuid(), text }, ...prevItems];
       });
     }
   };
@@ -89,15 +89,17 @@ const App = () => {
   };
 
   const itemChecked = (id, text) => {
-    const isChecked = checkedItems.filter(checkedItem => checkedItem.id === id);
+    const isChecked = checkedItems.filter(
+      (checkedItem) => checkedItem.id === id
+    );
     isChecked.length
       ? // remove item from checked items state (uncheck)
-        checkedItemChange(prevItems => {
-          return [...prevItems.filter(item => item.id !== id)];
+        checkedItemChange((prevItems) => {
+          return [...prevItems.filter((item) => item.id !== id)];
         })
       : // Add item to checked items state
-        checkedItemChange(prevItems => {
-          return [...prevItems.filter(item => item.id !== id), {id, text}];
+        checkedItemChange((prevItems) => {
+          return [...prevItems.filter((item) => item.id !== id), { id, text }];
         });
   };
 
@@ -107,7 +109,7 @@ const App = () => {
       <AddItem addItem={addItem} />
       <FlatList
         data={items}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <ListItem
             item={item}
             deleteItem={deleteItem}
