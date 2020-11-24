@@ -1,7 +1,7 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-const Header = ({title}) => {
+const Header = ({ title }) => {
   return (
     <View style={styles.header}>
       <Text style={styles.text}>{title}</Text>
@@ -10,19 +10,19 @@ const Header = ({title}) => {
 };
 
 Header.defaultProps = {
-  title: 'Shopping List',
+  title: "Simple Shopping list",
 };
 
 const styles = StyleSheet.create({
   header: {
     height: 60,
     padding: 15,
-    backgroundColor: 'darkslateblue',
+    backgroundColor: "darkslateblue",
   },
   text: {
-    color: 'white',
+    color: "white",
     fontSize: 23,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 

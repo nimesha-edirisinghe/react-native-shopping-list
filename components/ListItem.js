@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   TextInput,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+} from "react-native";
+import Icon from "react-native-vector-icons/dist/FontAwesome";
 
 const ListItem = ({
   item,
@@ -20,7 +20,7 @@ const ListItem = ({
   checkedItems,
 }) => {
   const checked = checkedItems.filter(
-    checkedItem => checkedItem.id === item.id,
+    (checkedItem) => checkedItem.id === item.id
   );
   return (
     <TouchableOpacity style={styles.listItem}>
@@ -36,7 +36,8 @@ const ListItem = ({
             onPress={() => itemChecked(item.id, item.text)}
             style={
               checked.length ? styles.checkedItemText : styles.listItemText
-            }>
+            }
+          >
             {item.text}
           </Text>
         )}
@@ -72,27 +73,27 @@ const ListItem = ({
 
 const styles = StyleSheet.create({
   listItem: {
-    padding: 15,
-    backgroundColor: '#f8f8f8',
+    padding: 16,
+    backgroundColor: "#f8f8f8",
     borderBottomWidth: 1,
-    borderColor: '#eee',
+    borderColor: "#eee",
   },
   listItemView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   listItemText: {
-    fontSize: 18,
+    fontSize: 17,
   },
   checkedItemText: {
     fontSize: 18,
-    textDecorationLine: 'line-through',
-    color: 'green',
+    textDecorationLine: "line-through",
+    color: "green",
   },
   iconView: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     width: 70,
   },
   editItemInput: {
